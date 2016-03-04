@@ -6,7 +6,7 @@ I love the `$SHELL`. I've been trying to _exclusivly_ use it to operate my compu
   
 Some of the main things that Ive taken away from the last fiew years are the benifits of **modularization**, and **testing**. _Package managers_ aside, the idea of coding with out some way to `#import a-file` or `require('a-file');` makes my head hurt. Debuging a 500+ line file scares me, and I dont even want to think about Debuging a 5,000+, or 15,000 + line file.   
   
-All week I've been spending my free time, trying to find a solution to writing more modular `$SHELL` scripts. I mostly came up with a pile of super sketchy hacks that wreeked of [code smell](https://en.wikipedia.org/wiki/Code_smell). Eventually I decited that I had no reason to re-solve a problem that has allready been solved, really well. I just needed a preprocessor that wasnt biased about the _language_ or content of my code. I needed [general-purpose preprocessor](http://en.nothingisreal.com/wiki/GPP)(**gpp**). 
+All week I've been spending my free time, trying to find a solution to writing more modular `$SHELL` scripts. I mostly came up with a pile of super sketchy hacks that wreeked of [code smell](https://en.wikipedia.org/wiki/Code_smell). Eventually I decited that I had no reason to re-solve a problem that has allready been solved, really well. I just needed a preprocessor that wasnt biased about the _language_ or content of my code. I needed [general-purpose preprocessor](http://en.nothingisreal.com/wiki/GPP) **(*gpp*)**. 
 
 
 
