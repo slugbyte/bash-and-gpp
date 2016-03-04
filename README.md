@@ -38,7 +38,7 @@ All week I've been spending my free time, trying to find a solution to writing m
 `touch lib/say-hello.sh` 
 * Create a new empty file _test/say-hello-test.sh_ for writing a hello world test.  
  * `#include "say-hello.sh"` into _test/say-hello-test.sh_.
- * Use **gpp** _macros_ to check that your say-hello-test code has not been loaded.
+ * Use the **gpp** _macros_ `#ifndef`, `#define`, and `#endif` to check that your function say-hello-test has not been loaded.
  * Write a  function `sayHelloTest` that will test `sayHello`. Say hello should `echo "hello, $1"` if input is provided or `echo "hello, world"` if no input is provided. Log output regarding the results of your tests.
 
 **/test/say-hello-test.sh**  
