@@ -14,7 +14,7 @@ All week I've been spending my free time, trying to find a solution to writing m
 # Proof Of Concept Outline
 * Write a `sayHello` **fucnction** that will `echo "hello, $1"` if input is provided or `echo "hello, world"` if no input is provided. Store this function in its own file called **say-hello.sh**. 
 * `#import say-hello.sh` into a **say-hello-test.sh**.
-* Write a `sayHelloTest` function that will test wether `sayHello` functions as expected. Log output regarding the results of your tests.
+* Write a `sayHelloTest` function that will test `sayHello` with and without input. Log output regarding the results of your tests.
 * `#import say-hello.sh` into a file called **main.sh** and invoke `sayHello` with the first argument of arv `"$1"`.
   
 **/helloworld.sh**  
