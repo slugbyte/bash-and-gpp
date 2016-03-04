@@ -1,4 +1,4 @@
-Writing better bash with gpp
+Writing better shell scripts with gpp
 ============================
 
 # Preface
@@ -15,8 +15,6 @@ All week I've been spending my free time, trying to find a solution to writing m
 * Run the test and make sure it succeds.
 * Write a program that imports the function with gpp and puts it to good use.
 
-
-
 # Getting Started
 ### File Structure Outline
 ```
@@ -30,16 +28,18 @@ All week I've been spending my free time, trying to find a solution to writing m
     ├── all-test.sh       ----> the script that is the entry point for gpp, for running tests.
     └── say-hello-test.sh ----> the script with the function sayHelloTest
 ```
+
 ### Setup
-* Create a new directory for this project.
+* Create a new directory for this project.  
 `$ mkdir bash-and-gpp && cd bash-and-cpp`.
-* Create lib and test directorys for organizing scripts.
+* Create lib and test directorys for organizing scripts.  
 `$ mkdir lib test`
-* Create an empty file _lib/say-hello.sh_ that we will be writing a code in later. 
+* Create an empty file _lib/say-hello.sh_ that we will be writing a code in later.   
 `touch lib/say-hello.sh` 
-* Create a new empty file _test/say-hello-test.sh_ for writing a hello world test.
- * `#import say-hello.sh` into a _test/say-hello-test.sh_.
- * Write a `sayHelloTest` function that will test `sayHello`. Say hello should `echo "hello, $1"` if input is provided or `echo "hello, world"` if no input is provided. Log output regarding the results of your tests.
+* Create a new empty file _test/say-hello-test.sh_ for writing a hello world test.  
+ * `#include "say-hello.sh"` into _test/say-hello-test.sh_.
+ * Use **gpp** _macros_ to check that your say-hello-test code has not been loaded.
+ * Write a  function `sayHelloTest` that will test `sayHello`. Say hello should `echo "hello, $1"` if input is provided or `echo "hello, world"` if no input is provided. Log output regarding the results of your tests.
 
 **/test/say-hello-test.sh**  
 ``` sh  
