@@ -9,13 +9,24 @@ Some of the main things that Ive taken away from the last fiew years are the ben
 All week I've been spending my free time, trying to find a solution to writing more modular `$SHELL` scripts. I mostly came up with a pile of super sketchy hacks that wreeked of [code smell](https://en.wikipedia.org/wiki/Code_smell). Eventually I decited that I had no reason to re-solve a problem that has allready been solved, really well. I just needed a preprocessor that wasnt biased about the _language_ or _content_ of my code. I needed [general-purpose preprocessor](http://en.nothingisreal.com/wiki/GPP) **(_gpp_)**. 
 
 
-
-
 # Proof Of Concept Outline
 * Write a `sayHello` **fucnction** that will `echo "hello, $1"` if input is provided or `echo "hello, world"` if no input is provided. Store this function in its own file called **say-hello.sh**. 
 * `#import say-hello.sh` into a **say-hello-test.sh**.
 * Write a `sayHelloTest` function that will test `sayHello` with and without input. Log output regarding the results of your tests.
 * `#import say-hello.sh` into a file called **main.sh** and invoke `sayHello` with the first argument of arv `"$1"`.
+* 
+
+```
+/
+├── helloworld.sh                        ----> final product
+├── lib                                  ----> dir for scripts that will provide specific functionality to your program. 
+│   └── say-hello.sh                     ----> the script with the function sayHello 
+├── main.sh                              ----> the script that is the entry point for gpp, for the main program.
+├── makefile                             ----> makefile with tasks for running tests and building helloworld.sh
+└── test                                 ----> dir for scripts that will test scripts in /lib
+    ├── all-test.sh                      ----> the script that is the entry point for gpp, for running tests.
+    └── say-hello-test.sh                ----> the script with the function sayHelloTest
+```
   
 **/helloworld.sh**  
 ``` sh  
