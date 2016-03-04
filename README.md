@@ -18,14 +18,14 @@ All week I've been spending my free time, trying to find a solution to writing m
 
 ```
 /
-├── helloworld.sh                        ----> final product
-├── lib                                  ----> dir for scripts that will provide specific functionality to your program. 
-│   └── say-hello.sh                     ----> the script with the function sayHello 
-├── main.sh                              ----> the script that is the entry point for gpp, for the main program.
-├── makefile                             ----> makefile with tasks for running tests and building helloworld.sh
-└── test                                 ----> dir for scripts that will test scripts in /lib
-    ├── all-test.sh                      ----> the script that is the entry point for gpp, for running tests.
-    └── say-hello-test.sh                ----> the script with the function sayHelloTest
+├── helloworld.sh         ----> final product
+├── lib                   ----> dir for scripts that will provide specific functionality to your program. 
+│   └── say-hello.sh      ----> the script with the function sayHello 
+├── main.sh               ----> the script that is the entry point for gpp, for the main program.
+├── makefile              ----> makefile with tasks for running tests and building helloworld.sh
+└── test                  ----> dir for scripts that will test scripts in /lib
+    ├── all-test.sh       ----> the script that is the entry point for gpp, for running tests.
+    └── say-hello-test.sh ----> the script with the function sayHelloTest
 ```
   
 **/helloworld.sh**  
