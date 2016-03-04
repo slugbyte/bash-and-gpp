@@ -9,8 +9,11 @@ Some of the main things that Ive taken away from the last fiew years are the ben
 All week I've been spending my free time, trying to find a solution to writing more modular `$SHELL` scripts. I mostly came up with a pile of super sketchy hacks that wreeked of [code smell](https://en.wikipedia.org/wiki/Code_smell). Eventually I decited that I had no reason to re-solve a problem that has allready been solved, really well. I just needed a preprocessor that wasnt biased about the _language_ or _content_ of my code. I needed [general-purpose preprocessor](http://en.nothingisreal.com/wiki/GPP) **(_gpp_)**. 
 
 # Poof Of Concept Overview
-* Write a test for a function `say Hello` that will `echo "hello, $1"` if input is provided or `echo "hello, world"` if no input is provided.
+* Write a test for a function that does not exit and fail it, but will be imported with gpp.
 * Run the test that make sure the test fails.
+* Write a function to pass the test.
+* Write a program that imports that test with gpp and puts it to good use.
+
 # Getting Started
 ### Setup
 * Create a new directory for this project `mkdir bash-and-gpp && cd bash-and-cpp`.
