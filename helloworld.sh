@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function sayHello(){
+function say_hello(){
   local name="$1"
   [ "$name" ] || name="world"
   echo "hello, $name"
 }
 
-sayHello $1
+say_hello $1

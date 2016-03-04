@@ -4,5 +4,5 @@
 
 #ifndef ALL_TEST
 #define ALL_TEST
-sayHelloTest
+say_hello_test
 #endif

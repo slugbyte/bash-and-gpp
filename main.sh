@@ -4,5 +4,5 @@
 
 #ifndef MAIN
 #define MAIN
-sayHello $1
+say_hello $1
 #endif

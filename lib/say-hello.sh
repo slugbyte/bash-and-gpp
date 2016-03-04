@@ -1,6 +1,6 @@
 #ifndef SAY_HELLO
 #define SAY_HELLO
-function sayHello(){
+function say_hello(){
   local name="$1"
   [ "$name" ] || name="world"
   echo "hello, $name"

@@ -2,13 +2,13 @@
 
 #ifndef TEST_SAY_HELLO
 #define TEST_SAY_HELLO
-function sayHelloTest(){
+function say_hello_test(){
   local tab="    "
   local tab2="        "
   echo "testing say-hello.sh"
-  echo "${tab}sayHello with no args should return 'hello, world'"
 
-  result=$(sayHello)  
+  echo "${tab}sayHello with no args should return 'hello, world'"
+  result=$(say_hello)  
   if [ "$result" = "hello, world" ];then 
     echo "${tab2}success"
   else 
@@ -16,7 +16,7 @@ function sayHelloTest(){
   fi
 
   echo "    sayHello with args should return 'hello, slug neo'"
-  result=$(sayHello "slug neo")  
+  result=$(say_hello "slug neo")  
   if [ "$result" = "hello, slug neo" ];then 
     echo -e "${tab2}success"
   else 
