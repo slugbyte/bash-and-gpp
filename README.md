@@ -8,7 +8,7 @@ Some of the main things that I've taken away from the last fiew years are the be
   
 All week I've been spending my free time, trying to find a solution to writing more modular `$SHELL` scripts. I mostly came up with a pile of super sketchy hacks that wreeked of [code smell](https://en.wikipedia.org/wiki/Code_smell). Eventually I decited that I had no reason to re-solve a problem that has allready been solved, really well. I just needed a preprocessor that wasnt biased about the _language_ or _content_ of my code. I needed [general-purpose preprocessor](http://en.nothingisreal.com/wiki/GPP) **(_gpp_)**. 
 
-# Poof Of Concept Overview
+# Overview
 * Write a test for a function that does not exist, but will be imported with gpp.
 * Run the test and make sure it fails.
 * Write a function to pass the test.
@@ -28,8 +28,7 @@ All week I've been spending my free time, trying to find a solution to writing m
     ├── all-test.sh       ----> the script that is the entry point for gpp, for running tests.
     └── say-hello-test.sh ----> the script with the function sayHelloTest
 ```
-
-### Setup
+### All the steps
 * Create a new directory for this project.  
 `$ mkdir bash-and-gpp && cd bash-and-cpp`.
 * Create lib and test directorys for organizing scripts.  
