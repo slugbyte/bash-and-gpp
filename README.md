@@ -88,6 +88,8 @@ say_hello_test
  * make your test exicutable with `chmod`.
  * run your test.
  * delete your test with `rm`.  
+  
+**makefile**
 ``` makefile
 run_tests: 
    gpp test/run-tests.sh -I ./lib -I ./test -o run-tests.sh
@@ -107,7 +109,8 @@ testing say-hello.sh
 
 ```
 * Write a `say_hello` **fucnction** in _lib/say-hello.sh_ to pass `say_hello_test`.  
- * Use the **gpp** _macros_ `#ifndef`, `#define`, and `#endif` to check that your function say-hello has not been loaded.  
+ * Use the **gpp** _macros_ `#ifndef`, `#define`, and `#endif` to check that your function say-hello has not been loaded.   
+   
 **/lib/say-hello.sh**  
 ``` sh  
 #ifndef SAY_HELLO
@@ -119,7 +122,7 @@ function say_hello(){
 }
 #endif
 ```  
-* Run your test again, and make sure they pass.  
+* Run your test again, and make sure they pass.   
 ```sh
 $ make run_tests -s
 testing say-hello.sh
@@ -131,7 +134,8 @@ testing say-hello.sh
 ```
 * Create _main.sh_  
 `$ touch main.sh`
- * `#include say-hello.sh` into _main.sh_ and invoke `say_hello` with the first argument of arv `"$1"`.  
+ * `#include say-hello.sh` into _main.sh_ and invoke `say_hello` with the first argument of arv `"$1"`.   
+     
 **main.sh**
  ``` sh  
 #!/bin/bash
@@ -142,6 +146,7 @@ sayHello $1
 * Add a task called all to your makefile build _main.sh_ with gpp
  * build your _main.sh_ with `gpp`.
  * make your program exicutable with `chmod`.  
+  
 **makefile**
 ```
 all:
@@ -157,7 +162,8 @@ run_tests:
 * build your program    
 `$ make`
 * inspect the output  
-`$ cat helloworld.sh`  
+`$ cat helloworld.sh`   
+  
 **/helloworld.sh**  
 ``` sh  
 #!/bin/bash
