@@ -2,9 +2,9 @@ Writing shell scripts with gpp
 ==============================
 
 # Preface
-I love the `$SHELL`. I've been trying to _"exclusivly"_ use it to operate my computer for about three years. This switch came about when I decited that I wanted to take becoming a _programmer_ seriousally. The more I use it the more I fall in love. During this time I have spent a lot of time _dev'ing_  in **javascript**, **c**, **swift**, and **objective-c**. I have meet some amazing _developers_, [toastynerd](https://github.com/toastynerd), [michaelbabiy](https://github.com/michaelbabiy), [cadbot](https://github.com/cadbot), [brookr](https://github.com/brookr), and [krew](https://github.com/slugbyte/following) who have tought me a lot.  
+I love the `$SHELL`. I've been trying to _"exclusivly"_ use it to operate my computer for about three years. This switch came about when I decited that I wanted to take becoming a _programmer_ seriousally. The more I use it the more I fall in love. During this time I have spent a lot of time _dev'ing_  in **javascript**, **c**, **swift**, and **objective-c**. I have also meet some amazing _developers_, [toastynerd](https://github.com/toastynerd), [michaelbabiy](https://github.com/michaelbabiy), [cadbot](https://github.com/cadbot), [brookr](https://github.com/brookr), and [krew](https://github.com/slugbyte/following) who have tought me a lot.  
   
-Some of the main things that I've taken away from the last fiew years are the benifits of **modularization**, and **testing**. _Package managers_ aside, the idea of coding with out some way to `#import a-file` or `require('a-file');` makes my head hurt. Debuging a 500+ line file scares me, and I dont even want to think about Debuging a 5,000+, or 15,000 + line file.   
+Some of the main things that I've taken away from the last few years are the benifits of **modularization**, and **testing**. _Package managers_ aside, the idea of coding with out some way to `#import a-file` or `require('a-file');` makes my head hurt. Debuging a 500+ line file scares me, and I dont even want to think about Debuging a 5,000+, or 15,000 + line file.   
   
 All week I've been spending my free time, trying to find a solution to writing more modular `$SHELL` scripts. I mostly came up with a pile of super sketchy hacks that wreeked of [code smell](https://en.wikipedia.org/wiki/Code_smell). Eventually I decited that I had no reason to re-solve a problem that has allready been solved, really well. I just needed a preprocessor that wasnt biased about the _language_ or _content_ of my code. I needed [general-purpose preprocessor](http://en.nothingisreal.com/wiki/GPP) **(_gpp_)**. 
 
@@ -28,7 +28,7 @@ All week I've been spending my free time, trying to find a solution to writing m
     ├── all-test.sh       ----> the script that is the entry point for gpp, for running tests.
     └── say-hello-test.sh ----> the script with the function sayHelloTest
 ```
-### All the steps
+## All the steps
 * Create a new directory for this project.  
 `$ mkdir bash-and-gpp && cd bash-and-cpp`.
 * Create lib and test directorys for organizing scripts.  
