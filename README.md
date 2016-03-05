@@ -1,5 +1,5 @@
-Writing better shell scripts with gpp
-============================
+Writing shell scripts with gpp
+==============================
 
 # Preface
 I love the `$SHELL`. I've been trying to _"exclusivly"_ use it to operate my computer for about three years. This switch came about when I decited that I wanted to take becoming a _programmer_ seriousally. The more I use it the more I fall in love. During this time I have spent a lot of time _dev'ing_  in **javascript**, **c**, **swift**, and **objective-c**. I have meet some amazing _developers_, [toastynerd](https://github.com/toastynerd), [michaelbabiy](https://github.com/michaelbabiy), [cadbot](https://github.com/cadbot), [brookr](https://github.com/brookr), and [krew](https://github.com/slugbyte/following) who have tought me a lot.  
@@ -36,7 +36,7 @@ All week I've been spending my free time, trying to find a solution to writing m
 `$ mkdir lib test`
 * Create an empty file _lib/say-hello.sh_ that we will be writing a code in later.   
 `touch lib/say-hello.sh` 
-* Create a new empty file _test/say-hello-test.sh_ for writing a hello world test.  
+* Create a new empty file _test/say-hello-test.sh_ for writing a test function `say_hello_test`.  
  * `#include "say-hello.sh"` into _test/say-hello-test.sh_.
  * Use the **gpp** _macros_ `#ifndef`, `#define`, and `#endif` to check that your function say-hello-test has not been loaded.
  * Write a  function `sayHelloTest` that will test `sayHello`. Say hello should `echo "hello, $1"` if input is provided or `echo "hello, world"` if no input is provided. Log output regarding the results of your tests.
@@ -70,7 +70,42 @@ function sayHelloTest(){
 }
 #endif
 ```  
+* Create a new file _test/run-tests.sh_ for including and running test functions.  
+```$ touch test/run-test.sh```
+* `#include "say_hello_test.sh"` in _test/run-tests.sh_.
+* Invoke the function`say_hello_test`
+**/test/run-tests.sh**  
+``` sh  
+#!/bin/bash
+#include "say-hello-test.sh"
 
+say_hello_test
+```  
+* Create a makefile for building and running your test.  
+`$ touch makefile`  
+* Create a task in the makefile called `run_tests`.
+ * build your _test/run-test.sh_ with `gpp`.
+ * make your test exicutable with `chmod`.
+ * run your test.
+ * delete your test with `rm`.  
+``` makefile
+run_tests: 
+   gpp test/run-tests.sh -I ./lib -I ./test -o run-tests.sh
+   chmod 755 run-tests.sh
+   ./run-tests.sh
+   rm run-tests.sh
+```
+* run test and to sure they fail.
+ * use `-s` flag with `make` to silence make, and only see output of `gpp`, `chmod`, `run-tests.sh`, and `rm`.
+``` sh
+$ make run_test -s
+testing say-hello.sh
+    sayHello with no args should return 'hello, world'
+        failure
+    sayHello with args should return 'hello, slug neo'
+        failure
+
+```
 * Write a `sayHello` **fucnction** in _lib/say-hello.sh_ to pass `say_hello_test` 
 **/lib/say-hello.sh**  
 ``` sh  
@@ -123,15 +158,5 @@ t:
 	rm ./run-me-test.sh
 ```  
 ##/test  
-**/test/all-test.sh**  
-``` sh  
-#!/bin/bash
 
-#include "say-hello-test.sh"
-
-#ifndef ALL_TEST
-#define ALL_TEST
-sayHelloTest
-#endif
-```  
 
