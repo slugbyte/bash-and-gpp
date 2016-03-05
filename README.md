@@ -39,7 +39,7 @@ All week I've been spending my free time, trying to find a solution to writing m
 * Create a new empty file _test/say-hello-test.sh_ for writing a test function `say_hello_test`.  
  * `#include "say-hello.sh"` into _test/say-hello-test.sh_.
  * Use the **gpp** _macros_ `#ifndef`, `#define`, and `#endif` to check that your function say-hello-test has not been loaded.
- * Write a  function `sayHelloTest` that will test `sayHello`. Say hello should `echo "hello, $1"` if input is provided or `echo "hello, world"` if no input is provided. Log output regarding the results of your tests.
+ * Write a  function `say_hello_test` that will test `sayHello`. Say hello should `echo "hello, $1"` if input is provided or `echo "hello, world"` if no input is provided. Log output regarding the results of your tests.
 
 **/test/say-hello-test.sh**  
 ``` sh  
@@ -47,21 +47,21 @@ All week I've been spending my free time, trying to find a solution to writing m
 
 #ifndef TEST_SAY_HELLO
 #define TEST_SAY_HELLO
-function sayHelloTest(){
+function say_hello_test(){
   local tab="    "
   local tab2="        "
   echo "testing say-hello.sh"
-  echo "${tab}sayHello with no args should return 'hello, world'"
-
-  result=$(sayHello)  
+  
+  echo "${tab}say_hello with no args should return 'hello, world'"
+  result=$(say_hello)  
   if [ "$result" = "hello, world" ];then 
     echo "${tab2}success"
   else 
     echo "${tab2}failure"
   fi
 
-  echo "    sayHello with args should return 'hello, slug neo'"
-  result=$(sayHello "slug neo")  
+  echo "${tab}say_hello with args should return 'hello, slug neo'"
+  result=$(say_hello "slug neo")  
   if [ "$result" = "hello, slug neo" ];then 
     echo -e "${tab2}success"
   else 
@@ -72,8 +72,8 @@ function sayHelloTest(){
 ```  
 * Create a new file _test/run-tests.sh_ for including and running test functions.  
 ```$ touch test/run-test.sh```
-* `#include "say_hello_test.sh"` in _test/run-tests.sh_.
-* Invoke the function`say_hello_test`
+ * `#include "say_hello_test.sh"` in _test/run-tests.sh_.
+ * Invoke the function`say_hello_test`
 **/test/run-tests.sh**  
 ``` sh  
 #!/bin/bash
@@ -98,15 +98,16 @@ run_tests:
 * run test and to sure they fail.
  * use `-s` flag with `make` to silence make, and only see output of `gpp`, `chmod`, `run-tests.sh`, and `rm`.
 ``` sh
-$ make run_test -s
+$ make run_tests -s
 testing say-hello.sh
-    sayHello with no args should return 'hello, world'
+    say_hello with no args should return 'hello, world'
         failure
-    sayHello with args should return 'hello, slug neo'
+    say_hello with args should return 'hello, slug neo'
         failure
 
 ```
-* Write a `sayHello` **fucnction** in _lib/say-hello.sh_ to pass `say_hello_test` 
+* Write a `say_hello` **fucnction** in _lib/say-hello.sh_ to pass `say_hello_test` 
+ * Use the **gpp** _macros_ `#ifndef`, `#define`, and `#endif` to check that your function say-hello has not been loaded.
 **/lib/say-hello.sh**  
 ``` sh  
 #ifndef SAY_HELLO
@@ -118,45 +119,61 @@ function say_hello(){
 }
 #endif
 ```  
-* `#import say-hello.sh` into a file called _main.sh_ and invoke `say_hello` with the first argument of arv `"$1"`.
+* Run your test again, and make sure they pass.
+```sh
+$ make run_tests -s
+testing say-hello.sh
+    say_hello with no args should return 'hello, world'
+        success
+    say_hello with args should return 'hello, slug neo'
+        success
 
+```
+* Create _main.sh_ 
+`$ touch main.sh`
+ * `#include say-hello.sh` into _main.sh_ and invoke `say_hello` with the first argument of arv `"$1"`.  
+**main.sh**
+ ``` sh  
+#!/bin/bash
+#include "say-hello.sh"
+
+sayHello $1
+```  
+* Add a task called all to your makefile build _main.sh_ with gpp
+ * build your _main.sh_ with `gpp`.
+ * make your program exicutable with `chmod`. 
+```
+all:
+	gpp main.sh -I ./lib -o helloworld.sh
+	chmod 755 helloworld.sh
+
+run_tests: 
+	gpp ./test/all-test.sh -I ./lib -I ./test -o run-me-test.sh
+	chmod 755 run-me-test.sh
+	./run-me-test.sh
+	rm ./run-me-test.sh
+```
+* build your program  
+`$ make`
+* inspect the output
+`$ cat helloworld.sh`
 **/helloworld.sh**  
 ``` sh  
 #!/bin/bash
 
-function sayHello(){
+function say_hello(){
   local name="$1"
   [ "$name" ] || name="world"
   echo "hello, $name"
 }
 
-sayHello $1
+say_hello $1
 ```  
-##/lib  
 
-**/main.sh**  
-``` sh  
-#!/bin/bash
-
-#include "say-hello.sh"
-
-#ifndef MAIN
-#define MAIN
-sayHello $1
-#endif
-```  
-**/makefile**  
-``` txt  
-all:
-	gpp main.sh -I ./lib -o helloworld.sh
-	chmod 755 helloworld.sh
-
-t: 
-	gpp ./test/all-test.sh -I ./lib -I ./test -o run-me-test.sh
-	chmod 755 run-me-test.sh
-	./run-me-test.sh
-	rm ./run-me-test.sh
-```  
-##/test  
-
-
+* run your program
+``` sh
+$ ./helloworld.sh
+hello, world
+$ ./helloworld.sh neo slug
+hello, neo slug
+```
