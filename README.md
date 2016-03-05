@@ -106,8 +106,8 @@ testing say-hello.sh
         failure
 
 ```
-* Write a `say_hello` **fucnction** in _lib/say-hello.sh_ to pass `say_hello_test` 
- * Use the **gpp** _macros_ `#ifndef`, `#define`, and `#endif` to check that your function say-hello has not been loaded.
+* Write a `say_hello` **fucnction** in _lib/say-hello.sh_ to pass `say_hello_test`.  
+ * Use the **gpp** _macros_ `#ifndef`, `#define`, and `#endif` to check that your function say-hello has not been loaded.  
 **/lib/say-hello.sh**  
 ``` sh  
 #ifndef SAY_HELLO
@@ -119,7 +119,7 @@ function say_hello(){
 }
 #endif
 ```  
-* Run your test again, and make sure they pass.
+* Run your test again, and make sure they pass.  
 ```sh
 $ make run_tests -s
 testing say-hello.sh
@@ -129,7 +129,7 @@ testing say-hello.sh
         success
 
 ```
-* Create _main.sh_ 
+* Create _main.sh_  
 `$ touch main.sh`
  * `#include say-hello.sh` into _main.sh_ and invoke `say_hello` with the first argument of arv `"$1"`.  
 **main.sh**
@@ -141,7 +141,8 @@ sayHello $1
 ```  
 * Add a task called all to your makefile build _main.sh_ with gpp
  * build your _main.sh_ with `gpp`.
- * make your program exicutable with `chmod`. 
+ * make your program exicutable with `chmod`.  
+**makefile**
 ```
 all:
 	gpp main.sh -I ./lib -o helloworld.sh
@@ -153,10 +154,10 @@ run_tests:
 	./run-me-test.sh
 	rm ./run-me-test.sh
 ```
-* build your program  
+* build your program    
 `$ make`
-* inspect the output
-`$ cat helloworld.sh`
+* inspect the output  
+`$ cat helloworld.sh`  
 **/helloworld.sh**  
 ``` sh  
 #!/bin/bash
